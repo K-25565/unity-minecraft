@@ -5,6 +5,7 @@ using UnityEngine;
 public class GenBasicWorld : MonoBehaviour
 {
     // Public Variables
+    public int ChunkGridSize = 1;
     public int ChunkSizeX = 0;
     public int ChunkSizeY = 0;
     public int ChunkSizeZ = 0;
@@ -21,7 +22,7 @@ public class GenBasicWorld : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {       
-        GenerateChunk();
+        GenerateWorld();
 	}
 	
 	// Update is called once per frame
@@ -30,13 +31,13 @@ public class GenBasicWorld : MonoBehaviour
 		
 	}
 
-    void GenerateChunk()
+    void GenerateWorld()
     {
-        for (int x = 0; x < ChunkSizeX; x++)
+        for (int x = 0; x < (ChunkSizeX * ChunkGridSize); x++)
         {
             for (int y = 0; y < ChunkSizeY; y++)
             {
-                for (int z = 0; z < ChunkSizeZ; z++)
+                for (int z = 0; z < (ChunkSizeZ * ChunkGridSize); z++)
                 {
                     if (y == (ChunkSizeY - 1))
                     {

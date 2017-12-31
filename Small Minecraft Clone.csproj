@@ -78,8 +78,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Blocks\PlayerJumpRecovery.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollowMouse.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\UI\ButtonScripts.cs" />
     <Compile Include="Assets\Scripts\World Generation\GenBasicWorld.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

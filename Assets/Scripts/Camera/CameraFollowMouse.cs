@@ -22,19 +22,7 @@ public class CameraFollowMouse : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        gameObject.GetComponent<Rigidbody>().freezeRotation = true;
-        
-        // Check if a ridgedbody exists
-        if (gameObject.GetComponent<Rigidbody>() == true)
-        {
-            // Freeze the ridgedbody in place.
-            gameObject.GetComponent<Rigidbody>().freezeRotation = true;
-        }
-        else
-        {
-            // Print an error message.
-            print("Error!  There is no ridgedbody attached to the player!!!");
-        }
+        gameObject.GetComponent<Rigidbody>().freezeRotation = true;            
     }
 
     // Update is called once per frame

@@ -8,11 +8,14 @@ public class PlayerMovement : MonoBehaviour
     // Public Variables
     public int MovementSpeed = 1;
     public int JumpHeight = 1;
+
     public string Forward = string.Empty;
     public string Backward = string.Empty;
     public string Left = string.Empty;
     public string Right = string.Empty;
     public string Jump = string.Empty;
+
+    public bool IsJumping = false;
 
     // Use this for initialization
     void Start()
@@ -25,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Get an easy name for the ridgedbody
         Rigidbody PlayerRB = gameObject.GetComponent<Rigidbody>();
+
         // If the forward key is pressed, go forward by the movement speed.
         if (Input.GetKey(Forward))
         {
@@ -45,10 +49,20 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.transform.Translate(MovementSpeed * Time.deltaTime, 0f, 0f);
         }
-        // If the jump key is pressed, go up by 200 times the jumpheight.
-        if (Input.GetKeyDown(Jump))
+        // If the jump key is pressed, check if the player is already jumping.
+        if (Input.GetKey(Jump))
         {
-            PlayerRB.AddForce(new Vector3(0f, JumpHeight * 200, 0f));
+            if (IsJumping == true)
+            {
+                // Don't let the player jump again
+            }
+            else
+            {
+                // Let the program know the player is jumping
+                IsJumping = true;
+                // The player will go up by 200 times the jumpheight.
+                PlayerRB.AddForce(new Vector3(0f, JumpHeight * 200, 0));
+            }               
         }
     }
 }
