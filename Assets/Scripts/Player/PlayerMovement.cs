@@ -60,8 +60,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 // Let the program know the player is jumping
                 IsJumping = true;
-                // The player will go up by 200 times the jumpheight.
-                PlayerRB.AddForce(new Vector3(0f, JumpHeight * 200, 0));
+                // The player will go up by 250 times the jumpheight.
+                PlayerRB.AddForce(new Vector3(0f, JumpHeight * 250, 0));
             }               
         }
     }
