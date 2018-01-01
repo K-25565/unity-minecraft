@@ -19,10 +19,28 @@ public class GenBasicWorld : MonoBehaviour
     public Object StoneMat = null;
     public Object BedrockMat = null;
 
+    // Dev Variables
+    public bool DevMode = false;
+
 	// Use this for initialization
 	void Start ()
-    {       
-        GenerateWorld();
+    {      
+        if (DevMode == true)
+        {
+            GenerateWorld();
+        }
+        else
+        {
+            // Take the variables handed over the the GVS and assign them to the appropriate variables.
+            GenVarStorage GVS = GameObject.Find("Generation Variable Storage").GetComponent<GenVarStorage>();
+            ChunkGridSize = GVS.ChunkGridSize;
+            ChunkSizeX = GVS.ChunkSizeX;
+            ChunkSizeZ = GVS.ChunkSizeZ;
+            // Destroy the GVS to free up memory.
+            Destroy(GVS.gameObject);
+            // Generate the world.
+            GenerateWorld();
+        }       
 	}
 	
 	// Update is called once per frame
