@@ -41,7 +41,7 @@ public class BreakBlock : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetMouseButton(PlaceButton))
+        else if (Input.GetMouseButtonDown(PlaceButton))
         {
             Ray Ray2 = gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             RaycastHit Hit2;
