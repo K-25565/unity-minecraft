@@ -26,13 +26,16 @@ public class BreakBlock : MonoBehaviour
     {
         if (Input.GetMouseButton(BreakButton))
         {
+            // Create a Ray and a RaycastHit to go out and hit a block
             Ray Ray = gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             RaycastHit Hit;
-
-            if (Physics.Raycast(Ray, out Hit, 100))
+            // If the Ray hit anything
+            if (Physics.Raycast(Ray, out Hit, 5))
             {
+                // If the Ray hit a Block
                 if (Hit.transform.gameObject.tag == "Block")
                 {
+                    // Minus the Block's health by the block damage amount.
                     Hit.transform.gameObject.GetComponent<BlockStats>().BlockHealth -= BlockDamageAmount;
                 }
                 else
@@ -43,19 +46,21 @@ public class BreakBlock : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(PlaceButton))
         {
+            // Create a Ray and a RacstHit to go out and hit a block
             Ray Ray2 = gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             RaycastHit Hit2;
-
-            if (Physics.Raycast(Ray2, out Hit2, 100))
+            // If the Ray hit anything
+            if (Physics.Raycast(Ray2, out Hit2, 5))
             {
+                // Find where the block below is
                 Vector3 BlockBelowPos = Hit2.transform.position;
-
+                // Create a new block one unit above where the below block is.
                 Instantiate(BlockToPlace, new Vector3(BlockBelowPos.x, (BlockBelowPos.y + 1), BlockBelowPos.z), Quaternion.identity);
             }
         }
         else
         {
-
+            // Do nothing...
         }
     }
 }

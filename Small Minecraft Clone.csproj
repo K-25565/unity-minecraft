@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Blocks\BlockStats.cs" />
     <Compile Include="Assets\Scripts\Blocks\HideBlocks.cs" />
     <Compile Include="Assets\Scripts\Blocks\HighlightBlock.cs" />
+    <Compile Include="Assets\Scripts\Blocks\Mesh Controller\BlockMeshController.cs" />
     <Compile Include="Assets\Scripts\Blocks\PlayerJumpRecovery.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollowMouse.cs" />
     <Compile Include="Assets\Scripts\Kill Line\KillLine.cs" />
