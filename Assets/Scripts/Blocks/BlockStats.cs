@@ -30,6 +30,7 @@ public class BlockStats : MonoBehaviour
             }
             else
             {
+                GameObject.Find("Block Mesh Controller").GetComponent<BlockMeshController>().PlayerBrokeBlock = true;
                 Destroy(gameObject);
             }           
         }
