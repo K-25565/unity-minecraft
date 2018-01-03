@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Blocks\BlockStats.cs" />
+    <Compile Include="Assets\Scripts\Blocks\HideBlocks.cs" />
     <Compile Include="Assets\Scripts\Blocks\HighlightBlock.cs" />
     <Compile Include="Assets\Scripts\Blocks\PlayerJumpRecovery.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollowMouse.cs" />
@@ -86,8 +87,11 @@
     <Compile Include="Assets\Scripts\Player\BreakBlock.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonScripts.cs" />
-    <Compile Include="Assets\Scripts\World Generation\GenBasicWorld.cs" />
-    <Compile Include="Assets\Scripts\World Generation\GenVarStorage.cs" />
+    <Compile Include="Assets\Scripts\World Generation\ChunkData.cs" />
+    <Compile Include="Assets\Scripts\World Generation\Old\GenBasicWorld.cs" />
+    <Compile Include="Assets\Scripts\World Generation\Old\GenVarStorage.cs" />
+    <Compile Include="Assets\Scripts\World Generation\WorldChunkGenerator.cs" />
+    <Compile Include="Assets\Scripts\World Generation\WorldData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
