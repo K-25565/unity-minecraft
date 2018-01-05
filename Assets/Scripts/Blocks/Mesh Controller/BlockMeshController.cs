@@ -55,7 +55,7 @@ public class BlockMeshController : MonoBehaviour
             XRightRay = new Ray(Block.transform.position, new Vector3(1f, 0f, 0f));
             ZLeftRay = new Ray(Block.transform.position, new Vector3(0f, 0f, -1f));
             ZRightRay = new Ray(Block.transform.position, new Vector3(0f, 0f, 1f));
-
+          
             // Top - 1
             if (Physics.Raycast(UpRay, out UpHit, 1f))
             {
@@ -138,27 +138,69 @@ public class BlockMeshController : MonoBehaviour
         switch (Side)
         {
             case 1:
-                Block.transform.Find("Top").GetComponent<MeshRenderer>().enabled = Toggle;
+                if (Block.name.Contains("Barrier"))
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    Block.transform.Find("Top").GetComponent<MeshRenderer>().enabled = Toggle;
+                }               
                 break;
 
             case 2:
-                Block.transform.Find("Bottom").GetComponent<MeshRenderer>().enabled = Toggle;
+                if (Block.name.Contains("Barrier"))
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    Block.transform.Find("Bottom").GetComponent<MeshRenderer>().enabled = Toggle;
+                }               
                 break;
 
             case 3:
-                Block.transform.Find("Side 1").GetComponent<MeshRenderer>().enabled = Toggle;
+                if (Block.name.Contains("Barrier"))
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    Block.transform.Find("Side 1").GetComponent<MeshRenderer>().enabled = Toggle;
+                }                
                 break;
 
             case 4:
-                Block.transform.Find("Side 2").GetComponent<MeshRenderer>().enabled = Toggle;
+                if (Block.name.Contains("Barrier"))
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    Block.transform.Find("Side 2").GetComponent<MeshRenderer>().enabled = Toggle;
+                }                
                 break;
 
             case 5:
-                Block.transform.Find("Side 3").GetComponent<MeshRenderer>().enabled = Toggle;
+                if (Block.name.Contains("Barrier"))
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    Block.transform.Find("Side 3").GetComponent<MeshRenderer>().enabled = Toggle;
+                }               
                 break;
 
             case 6:
-                Block.transform.Find("Side 4").GetComponent<MeshRenderer>().enabled = Toggle;
+                if (Block.name.Contains("Barrier"))
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    Block.transform.Find("Side 4").GetComponent<MeshRenderer>().enabled = Toggle;
+                }                
                 break;
 
             default:

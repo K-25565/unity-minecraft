@@ -14,6 +14,7 @@ public class GenBasicWorld : MonoBehaviour
     public int DirtLayerSize = 0;
 
     // Block Inventory
+    public Object BorderMat = null;
     public Object GrassMat = null;
     public Object DirtMat = null;
     public Object StoneMat = null;
@@ -25,9 +26,12 @@ public class GenBasicWorld : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {      
+        // Check if DevMode is enabled
         if (DevMode == true)
         {
+            // Generate the world and then the world border
             GenerateWorld();
+            GenerateWorldBorder();
         }
         else
         {
@@ -40,6 +44,8 @@ public class GenBasicWorld : MonoBehaviour
             Destroy(GVS.gameObject);
             // Generate the world.
             GenerateWorld();
+            // Generate the world border.
+            GenerateWorldBorder();
         }       
 	}
 	
@@ -51,24 +57,31 @@ public class GenBasicWorld : MonoBehaviour
 
     void GenerateWorld()
     {
+        // Run a for loop for the x coordinate to increase it by one
         for (int x = 0; x < (ChunkSizeX * ChunkGridSize); x++)
         {
+            // Run a for loop for the y coordinate to increase it by one
             for (int y = 0; y < ChunkSizeY; y++)
             {
+                // Run a for loop for the z coordinate to increase it by one
                 for (int z = 0; z < (ChunkSizeZ * ChunkGridSize); z++)
                 {
+                    // If this is the grass layer, generate the grass layer
                     if (y == (ChunkSizeY - 1))
                     {
                         Instantiate(GrassMat, new Vector3(x, y, z), Quaternion.identity);
                     }
+                    // If this is the dirt layer, generate the dirt layer
                     else if (y > (ChunkSizeY - DirtLayerSize))
                     {
                         Instantiate(DirtMat, new Vector3(x, y, z), Quaternion.identity);
                     }
+                    // If this is the stone layer, generate the stone layer
                     else if (y > 0)
                     {
                         Instantiate(StoneMat, new Vector3(x, y, z), Quaternion.identity);
                     }
+                    // If this is the bedrock layer, generate the bedrock layer
                     else
                     {
                         Instantiate(BedrockMat, new Vector3(x, y, z), Quaternion.identity);
@@ -76,5 +89,27 @@ public class GenBasicWorld : MonoBehaviour
                 }
             }
         }
+    }
+
+    void GenerateWorldBorder()
+    {
+        for (int x = 0; x < (ChunkSizeX * ChunkGridSize); x++)
+        {
+            for (int y = ChunkSizeY; y < (ChunkSizeY + 5); y++)
+            {
+                Instantiate(BorderMat, new Vector3(x, y, -1), Quaternion.identity);
+                Instantiate(BorderMat, new Vector3(x, y, (ChunkSizeZ * ChunkGridSize)), Quaternion.identity);
+            }           
+        }
+        
+        for (int z = 0; z < ((ChunkSizeZ * ChunkGridSize) + 2); z++)
+        {
+            for (int y = ChunkSizeY; y < (ChunkSizeY + 5); y++)
+            {
+                Instantiate(BorderMat, new Vector3(-1, y, (z - 1)), Quaternion.identity);
+                Instantiate(BorderMat, new Vector3((ChunkSizeX * ChunkGridSize), y, (z - 1)), Quaternion.identity);
+            }
+        }
+        
     }
 }

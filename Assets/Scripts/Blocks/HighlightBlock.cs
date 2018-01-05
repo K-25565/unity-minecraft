@@ -9,12 +9,19 @@ public class HighlightBlock : MonoBehaviour
         // When the mouse enters the block, set the block's shader to the highlight
         Shader Highlight = Shader.Find("FX/Flare");
 
-        gameObject.transform.Find("Top").GetComponent<Renderer>().material.shader = Highlight;
-        gameObject.transform.Find("Bottom").GetComponent<Renderer>().material.shader = Highlight;
-        gameObject.transform.Find("Side 1").GetComponent<Renderer>().material.shader = Highlight;
-        gameObject.transform.Find("Side 2").GetComponent<Renderer>().material.shader = Highlight;
-        gameObject.transform.Find("Side 3").GetComponent<Renderer>().material.shader = Highlight;
-        gameObject.transform.Find("Side 4").GetComponent<Renderer>().material.shader = Highlight;           
+        if (gameObject.name.Contains("Barrier"))
+        {
+            // Do nothing
+        }
+        else
+        {
+            gameObject.transform.Find("Top").GetComponent<Renderer>().material.shader = Highlight;
+            gameObject.transform.Find("Bottom").GetComponent<Renderer>().material.shader = Highlight;
+            gameObject.transform.Find("Side 1").GetComponent<Renderer>().material.shader = Highlight;
+            gameObject.transform.Find("Side 2").GetComponent<Renderer>().material.shader = Highlight;
+            gameObject.transform.Find("Side 3").GetComponent<Renderer>().material.shader = Highlight;
+            gameObject.transform.Find("Side 4").GetComponent<Renderer>().material.shader = Highlight;
+        }                  
     }
 
     private void OnMouseExit()
@@ -22,11 +29,18 @@ public class HighlightBlock : MonoBehaviour
         // When the mouse exits the block, return the block to its default shader.
         Shader Standard = Shader.Find("Standard");
 
-        gameObject.transform.Find("Top").GetComponent<Renderer>().material.shader = Standard;
-        gameObject.transform.Find("Bottom").GetComponent<Renderer>().material.shader = Standard;
-        gameObject.transform.Find("Side 1").GetComponent<Renderer>().material.shader = Standard;
-        gameObject.transform.Find("Side 2").GetComponent<Renderer>().material.shader = Standard;
-        gameObject.transform.Find("Side 3").GetComponent<Renderer>().material.shader = Standard;
-        gameObject.transform.Find("Side 4").GetComponent<Renderer>().material.shader = Standard;
+        if (gameObject.name.Contains("Barrier"))
+        {
+            // Do nothing
+        }
+        else
+        {
+            gameObject.transform.Find("Top").GetComponent<Renderer>().material.shader = Standard;
+            gameObject.transform.Find("Bottom").GetComponent<Renderer>().material.shader = Standard;
+            gameObject.transform.Find("Side 1").GetComponent<Renderer>().material.shader = Standard;
+            gameObject.transform.Find("Side 2").GetComponent<Renderer>().material.shader = Standard;
+            gameObject.transform.Find("Side 3").GetComponent<Renderer>().material.shader = Standard;
+            gameObject.transform.Find("Side 4").GetComponent<Renderer>().material.shader = Standard;
+        }      
     }
 }
