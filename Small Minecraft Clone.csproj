@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Kill Line\KillLine.cs" />
     <Compile Include="Assets\Scripts\Player\BreakBlock.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonScripts.cs" />
     <Compile Include="Assets\Scripts\World Generation\ChunkData.cs" />
     <Compile Include="Assets\Scripts\World Generation\Old\GenBasicWorld.cs" />
