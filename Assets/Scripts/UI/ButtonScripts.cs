@@ -20,14 +20,12 @@ public class ButtonScripts : MonoBehaviour {
     {
         // Start loading the new scene and when that's done, destroy the old scene.
         SceneManager.LoadSceneAsync("World Generation Menu");       
-        SceneManager.UnloadSceneAsync("Main Menu");
     }
 
     public void GM_Back()
     {
         // Start loading the new scene and when that's done, destroy the old scene.
         SceneManager.LoadSceneAsync("Main Menu");
-        SceneManager.UnloadSceneAsync("World Generation Menu");
     }
 
     public void GM_Generate()

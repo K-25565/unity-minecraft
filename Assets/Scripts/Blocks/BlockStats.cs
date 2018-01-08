@@ -6,7 +6,7 @@ public class BlockStats : MonoBehaviour
 {
     // Public Variables
     public int BlockHealth = 1;
-    public Object BlockType = null;
+    public string BlockType = string.Empty;
     
     // Use this for initialization
 	void Start ()
@@ -30,7 +30,7 @@ public class BlockStats : MonoBehaviour
             }
             else
             {
-                GameObject.Find("Block Mesh Controller").GetComponent<BlockMeshController>().PlayerBrokeBlock = true;
+                GameObject.Find("Block Mesh Controller").GetComponent<BlockMeshController>().CheckAroundSelectedBlock(gameObject);                
                 Destroy(gameObject);
             }           
         }

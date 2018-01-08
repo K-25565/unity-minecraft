@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
         // If the forward key is pressed, go forward by the movement speed.
         if (Input.GetKey(Forward))
         {
+            //PlayerRB.AddForce(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z * MovementSpeed));
+
             gameObject.transform.Translate(0f, 0f, MovementSpeed * Time.deltaTime);
         }
         // If the backword key is pressed, go backward by the movement speed.
