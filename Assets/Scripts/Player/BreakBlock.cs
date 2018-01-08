@@ -10,6 +10,42 @@ public class BreakBlock : MonoBehaviour
     public int BlockDamageAmount = 0;
     public Object BlockToPlace = null;
 
+    // Global Variables
+    Vector3 BlockToPlacePos(RaycastHit BlockHit)
+    {
+        Vector3 BlockPosition = BlockHit.transform.position;
+        Vector3 PlayerPosition = gameObject.transform.position;
+
+        if (BlockPosition.y < PlayerPosition.y)
+        {
+            return new Vector3(BlockPosition.x, BlockPosition.y + 1, BlockPosition.z);
+        }
+        else if (BlockPosition.y > PlayerPosition.y)
+        {
+            return new Vector3(BlockPosition.x, BlockPosition.y - 1, BlockPosition.z);
+        }
+        else if (BlockPosition.x < PlayerPosition.x)
+        {
+            return new Vector3(BlockPosition.x + 1, BlockPosition.y, BlockPosition.z);
+        }
+        else if (BlockPosition.x > PlayerPosition.x)
+        {
+            return new Vector3(BlockPosition.x - 1, BlockPosition.y, BlockPosition.z);
+        }
+        else if (BlockPosition.z < PlayerPosition.z)
+        {
+            return new Vector3(BlockPosition.x, BlockPosition.y, BlockPosition.z + 1);
+        }
+        else if (BlockPosition.z > PlayerPosition.z)
+        {
+            return new Vector3(BlockPosition.x, BlockPosition.y, BlockPosition.z - 1);
+        }
+        else
+        {
+            return new Vector3(BlockPosition.x, BlockPosition.y + 1, BlockPosition.z);
+        }
+    }
+
     // Use this for initialization
 	void Start ()
     {
@@ -51,11 +87,11 @@ public class BreakBlock : MonoBehaviour
             RaycastHit Hit2;
             // If the Ray hit anything
             if (Physics.Raycast(Ray2, out Hit2, 5))
-            {
+            {                              
                 // Find where the block below is
                 Vector3 BlockBelowPos = Hit2.transform.position;
                 // Create a new block one unit above where the below block is.
-                Instantiate(BlockToPlace, new Vector3(BlockBelowPos.x, (BlockBelowPos.y + 1), BlockBelowPos.z), Quaternion.identity);
+                Instantiate(BlockToPlace, BlockToPlacePos(Hit2), Quaternion.identity);
             }
         }
         else

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BlockMeshController : MonoBehaviour
 {
-    // Public Variables
-    public bool PlayerBrokeBlock = false;
-
     // Global Variables
     GameObject[] Blocks;
     Ray UpRay = new Ray();
@@ -27,23 +24,16 @@ public class BlockMeshController : MonoBehaviour
     {
         Blocks = GameObject.FindGameObjectsWithTag("Block");
         print(Blocks.Length + " blocks have been generated.");
-        CheckAroundBlocks();
+        CheckAroundAllBlocks();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (PlayerBrokeBlock == true)
-        {
-            CheckAroundBlocks();
-        }
-        else
-        {
-            // Do nothing...
-        }
+
 	}
 
-    void CheckAroundBlocks()
+    private void CheckAroundAllBlocks()
     {
         Blocks = GameObject.FindGameObjectsWithTag("Block");
 
@@ -129,8 +119,65 @@ public class BlockMeshController : MonoBehaviour
                 ToggleMesh(Block, 6, true);
             }
         }
+    }
 
-        PlayerBrokeBlock = false;
+    public void CheckAroundSelectedBlock(GameObject OriginalBlock)
+    {
+        UpRay = new Ray(OriginalBlock.transform.position, new Vector3(0f, 1f, 0f));
+        DownRay = new Ray(OriginalBlock.transform.position, new Vector3(0f, -1f, 0f));
+        XLeftRay = new Ray(OriginalBlock.transform.position, new Vector3(-1f, 0f, 0f));
+        XRightRay = new Ray(OriginalBlock.transform.position, new Vector3(1f, 0f, 0f));
+        ZLeftRay = new Ray(OriginalBlock.transform.position, new Vector3(0f, 0f, -1f));
+        ZRightRay = new Ray(OriginalBlock.transform.position, new Vector3(0f, 0f, 1f));
+
+        // Hit a block above, toggle that block's bottom mesh
+        if (Physics.Raycast(UpRay, out UpHit, 1f))
+        {
+            if (UpHit.transform.gameObject.tag == "Block")
+            {
+                ToggleMesh(UpHit.transform.gameObject, 2, true);
+            }          
+        }
+        // Hit a block below, toggle that block's top mesh
+        if (Physics.Raycast(DownRay, out DownHit, 1f))
+        {
+            if (DownHit.transform.gameObject.tag == "Block")
+            {
+                ToggleMesh(DownHit.transform.gameObject, 1, true);
+            }
+        }
+        // Hit a block on the ZRight, toggle the block's ZRight mesh
+        if (Physics.Raycast(ZRightRay, out ZRightHit, 1f))
+        {
+            if (ZRightHit.transform.gameObject.tag == "Block")
+            {
+                ToggleMesh(ZRightHit.transform.gameObject, 3, true);
+            }
+        }
+        // Hit a block on the ZLeft, toggle the block's ZLeft mesh
+        if (Physics.Raycast(ZLeftRay, out ZLeftHit, 1f))
+        {
+            if (ZLeftHit.transform.gameObject.tag == "Block")
+            {
+                ToggleMesh(ZLeftHit.transform.gameObject, 4, true);
+            }
+        }
+        // Hit a block on the XRight, toggle the block's XRight mesh
+        if (Physics.Raycast(XRightRay, out XRightHit, 1f))
+        {
+            if (XRightHit.transform.gameObject.tag == "Block")
+            {
+                ToggleMesh(XRightHit.transform.gameObject, 6, true);
+            }
+        }
+        // Hit a block on the XLeft, toggle the block's XLeft mesh
+        if (Physics.Raycast(XLeftRay, out XLeftHit, 1f))
+        {
+            if (XLeftHit.transform.gameObject.tag == "Block")
+            {
+                ToggleMesh(XLeftHit.transform.gameObject, 5, true);
+            }
+        }
     }
 
     void ToggleMesh(GameObject Block, int Side, bool Toggle)
@@ -138,7 +185,7 @@ public class BlockMeshController : MonoBehaviour
         switch (Side)
         {
             case 1:
-                if (Block.name.Contains("Barrier"))
+                if (Block.GetComponent<BlockStats>().BlockType == "Barrier")
                 {
                     // Do nothing
                 }
@@ -149,7 +196,7 @@ public class BlockMeshController : MonoBehaviour
                 break;
 
             case 2:
-                if (Block.name.Contains("Barrier"))
+                if (Block.GetComponent<BlockStats>().BlockType == "Barrier")
                 {
                     // Do nothing
                 }
@@ -160,7 +207,7 @@ public class BlockMeshController : MonoBehaviour
                 break;
 
             case 3:
-                if (Block.name.Contains("Barrier"))
+                if (Block.GetComponent<BlockStats>().BlockType == "Barrier")
                 {
                     // Do nothing
                 }
@@ -171,7 +218,7 @@ public class BlockMeshController : MonoBehaviour
                 break;
 
             case 4:
-                if (Block.name.Contains("Barrier"))
+                if (Block.GetComponent<BlockStats>().BlockType == "Barrier")
                 {
                     // Do nothing
                 }
@@ -182,7 +229,7 @@ public class BlockMeshController : MonoBehaviour
                 break;
 
             case 5:
-                if (Block.name.Contains("Barrier"))
+                if (Block.GetComponent<BlockStats>().BlockType == "Barrier")
                 {
                     // Do nothing
                 }
@@ -193,7 +240,7 @@ public class BlockMeshController : MonoBehaviour
                 break;
 
             case 6:
-                if (Block.name.Contains("Barrier"))
+                if (Block.GetComponent<BlockStats>().BlockType == "Barrier")
                 {
                     // Do nothing
                 }
