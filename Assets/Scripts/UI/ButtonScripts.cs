@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class ButtonScripts : MonoBehaviour {
 
+    // Public Functions
     public void MM_Quit()
     {
+        // Quit the application
         Application.Quit();
     }
 
@@ -50,5 +52,23 @@ public class ButtonScripts : MonoBehaviour {
         // Start loading the new scene and when that's done, destroy the old scene.
         SceneManager.LoadScene("World");
         SceneManager.UnloadSceneAsync("World Generation Menu");
+    }
+
+    public void PM_Continue()
+    {
+        // Find the GameUI and disable the Pause Menu
+        GameObject GameUI = GameObject.Find("GameUI");
+        GameUI.GetComponent<PauseScript>().ToggleGameState(false);       
+    }
+
+    public void PM_Options()
+    {
+
+    }
+
+    public void PM_SQ()
+    {
+        // Temporary Function until proper saving is coded!!!!!!!!!
+        SceneManager.LoadSceneAsync("Main Menu");
     }
 }

@@ -78,7 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Blocks\BlockMeshChanger.cs" />
     <Compile Include="Assets\Scripts\Blocks\BlockStats.cs" />
     <Compile Include="Assets\Scripts\Blocks\HideBlocks.cs" />
     <Compile Include="Assets\Scripts\Blocks\HighlightBlock.cs" />
@@ -88,8 +87,10 @@
     <Compile Include="Assets\Scripts\Kill Line\KillLine.cs" />
     <Compile Include="Assets\Scripts\Player\BreakBlock.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerPauseControl.cs" />
     <Compile Include="Assets\Scripts\Player\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonScripts.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseScript.cs" />
     <Compile Include="Assets\Scripts\World Generation\ChunkData.cs" />
     <Compile Include="Assets\Scripts\World Generation\Old\GenBasicWorld.cs" />
     <Compile Include="Assets\Scripts\World Generation\Old\GenVarStorage.cs" />
