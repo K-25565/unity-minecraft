@@ -55,7 +55,15 @@ public class BreakBlock : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        ListenForClick();
+        // Check if the game is paused
+        if (GameObject.Find("GameUI").GetComponent<PauseScript>().Paused == false)
+        {
+            ListenForClick();
+        }
+        else
+        {
+            // Do nothing
+        }
 	}
 
     void ListenForClick()
